@@ -33,7 +33,7 @@ Streams the PDF as a download/attachment to the browser.
 _(Streaming file contents to the client won't work if other page content has already been sent. Therefore, you should invoke this method before/above any other content is output to the template.)_
 
 ```twig
-{{ pdf.output }}
+{{ pdf.download }}
 ```
 
 
@@ -42,7 +42,7 @@ _(Streaming file contents to the client won't work if other page content has alr
 Returns the URL of the generated PDF file.
 
 ```twig
-{% set pdfUrl = printmaker.pdfFromTemplate('_myTemplate', someVars, someSettings).url %}
+{% set pdfUrl = craft.printmaker.pdfFromTemplate('_myTemplate', someVars, someSettings).url %}
 
 <a href="{{ pdfUrl }}">
    Download your PDF!
@@ -71,7 +71,7 @@ Sends an email with the generated PDF attached.
    body: "Hi {{ userName }}! Your PDF is attached. You can also download it here: {{ fileUrl }}"
 } %}
  
-{% set pdf = printmaker.pdfFromTemplate('_pdf/_myTemplate', someVars, someSettings) %}
+{% set pdf = craft.printmaker.pdfFromTemplate('_pdf/_myTemplate', someVars, someSettings) %}
  
-{% do pdf.email('YourPDF.pdf', settings, variables %} 
+{% do pdf.email('YourPDF.pdf', settings, variables) %} 
 ```
